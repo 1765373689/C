@@ -1,1 +1,71 @@
+NOTE_1:
+scanf的返回值是已经成功赋值的变量个数，也就是说函数返回值为 int 型。如果a和b都被成功读入，那么 scanf 的返回值就是2；
+如果只有a被成功读入，返回值为1；
+如果a和b都未被成功读入，返回值为0；
+如果遇到错误或遇到end of file，返回值为EOF。end of file为Ctrl+z 或者Ctrl+d。其中EOF的值为-1
+也就是说 scanf 返回值的取值范围是大于等于-1的整数只有返回值为EOF时 其取反的的值 即 while 循环的判断条件才为0 才能结束循环
+while 循环的判断条件为非0 即为真  
 
+NOTE_2:
+用于解决vs中scanf等函数报错问题
+#define _CRT_SECURE_NO_WARNINGS    //记得放在stdio.h的前面
+#include <stdio.h>
+
+NOTE_3:
+输出小数点后m位：
+printf("%.mf",&inf);注意有小数点.
+
+NOTE_4:
+从键盘获取字符串
+//记录输入的字符串
+	scanf("%c", &c);
+	int i = 0;
+	while (c != '\n') {
+		str[i] = c;
+		i++;
+		scanf("%c", &c);
+	}
+	str[i] = '\0';
+  OR
+直接scanf("%s",&c);
+
+NOTE_5:
+选择排序：选出最小、大放到前面
+for (int i = 0; i < sz - 1; i++) {
+		min = i;
+		for (int j = i + 1; j < sz; j++) {
+			if (arr[min] > arr[j])
+				min = j;
+		}
+		temp = arr[min];
+		arr[min] = arr[i];
+		arr[i] = temp;
+	}
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
+
+NOTE_
