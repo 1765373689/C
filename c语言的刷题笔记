@@ -42,7 +42,10 @@ for (int i = 0; i < sz - 1; i++) {
 		arr[i] = temp;
 	}
 
-NOTE_
+NOTE_6:
+用异或来交换：
+a=a^b;b=a^b;a=a^b
+(a ^ a = 0,a ^ 0 = a)
 
 NOTE_
 
