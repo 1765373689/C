@@ -1021,3 +1021,930 @@ void ZhuanZhiErWeiShuZhu(int arr[3][3], int hang, int lie) {
 		printf("\n");
 	}
 *******************************************************************************************************************************************
+1031: [编程入门]自定义函数之字符串反转
+题目描述
+写一函数，使输入的一个字符串按反序存放，
+在主函数中输入并输出反序后的字符串（不包含空格）。
+输入格式
+一行字符
+输出格式
+逆序后的字符串
+样例输入
+123456abcdef
+样例输出
+fedcba654321
+
+  代码实现：
+void ReverseString(char* str, int length) {
+	for (int i = 0; i < length / 2; i++) {
+		char temp = str[i];
+		str[i] = str[length - 1 - i];
+		str[length - 1 - i] = temp;
+	}
+	printf("%s", str);
+}
+*******************************************************************************************************************************************
+1032: [编程入门]自定义函数之字符串连接
+题目描述
+写一函数，将两个字符串连接
+输入格式
+两行字符串
+输出格式
+链接后的字符串
+样例输入
+123
+abc
+样例输出
+123abc
+
+  代码实现：
+void ConcatStr() {
+	char str1[50] = { '0' };
+	char str2[50] = { '0' };
+	char str[50] = { '0' };
+	scanf("%s", str1);
+	scanf("%s", str2);
+	int length1 = 0, length2 = 0;
+	while (str1[length1] != '\0')
+	{
+		str[length1] = str1[length1];
+		length1++;
+	}
+
+	while (str2[length2] != '\0')
+	{
+		str[length1++] = str2[length2];
+		length2++;
+	}
+	printf("%s", str);
+}
+
+*******************************************************************************************************************************************
+1033: [编程入门]自定义函数之字符提取
+题目描述
+写一函数，将一个字符串中的元音字母复制到
+另一个字符串，然后输出。
+输入格式
+一行字符串
+输出格式
+顺序输出其中的元音字母（aeiou）
+样例输入
+abcde
+样例输出
+ae
+
+  代码实现：
+void GetChar() {
+	char str[50] = { '0' };
+	char s[50] = { '0' };
+	scanf("%s", str);
+	int length = 0;
+	int length1 = 0;
+	while (str[length] != '\0') {
+		if (str[length] == 'a' ||
+			str[length] == 'e' ||
+			str[length] == 'i' ||
+			str[length] == 'o' ||
+			str[length] == 'u')
+		{
+			s[length1] = str[length];
+			length1++;
+		}
+		length++;
+	}
+	printf("%s", s);
+}
+*******************************************************************************************************************************************
+1034: [编程入门]自定义函数之数字分离
+题目描述
+写一函数，输入一个四位数字，要求输出这四个
+数字字符，但每两个数字间空格。如输入1990，
+应输出"1 9 9 0"。
+输入格式
+一个四位数
+输出格式
+增加空格输出
+样例输入
+1990
+样例输出
+1 9 9 0
+
+  代码实现：
+void DivideNumber() {
+	char number[50] = { '0' };
+	char str[50] = { '0' };
+	scanf("%s", number);
+	int length = 0;
+	int length1 = 0;
+	while (number[length] != '\0') {
+		str[length1++] = number[length];
+		str[length1] = ' ';
+		length1++;
+		length++;
+	}
+	str[length1] = '\0';
+	printf("%s", str);
+}
+*******************************************************************************************************************************************
+1035: [编程入门] 自定义函数之字符类型统计
+题目描述
+编写一函数，由实参传来一个字符串，统计此字符串中字母、数字、空格和其它字符的个数，
+在主函数中输入字符串以及输出上述结果。 只要结果，别输出什么提示信息。
+输入格式
+一行字符串
+输出格式
+统计数据，4个数字，空格分开。
+样例输入
+!@#$%^QWERT    1234567
+样例输出
+5 7 4 6
+
+  代码实现：
+void ClassifyString() {
+	char str[1000] = { '0' };
+	//scanf("%s", str);注意该题不能用这个了
+	int i = 0;
+	scanf("%[^\n]", str);
+	int zimu = 0;
+	int number = 0;
+	int blank = 0;
+	int other = 0;
+	while (str[i] != '\0') {
+		//字母
+		if ((str[i] >= 65 && str[i] <= 90) || (str[i] >= 96 && str[i] <= 122))	zimu++;
+		//数字
+		else if (str[i] >= 48 && str[i] <= 57)	number++;
+		//空格
+		else if (str[i] == 32)	blank++;
+		//其他
+		else other++;
+		i++;
+	}
+	printf("%d %d %d %d", zimu, number, blank, other);
+}
+
+分析：
+scanf("%[^\n]", str);   //除了回车键全部读入			====>这个方法最好
+*******************************************************************************************************************************************
+1036: [编程入门]带参数宏定义练习
+题目描述
+定义一个带参的宏，使两个参数的值互换，并写出程序，输入两个数作为使用宏时的实参。
+输出已交换后的两个值。
+输入格式
+两个数，空格隔开
+输出格式
+交换后的两个数，空格隔开
+样例输入
+1 2
+样例输出
+2 1 
+
+  代码实现：
+#define  swap(a,b)  a=a^b;b=a^b;a=a^b;
+
+int a, b;
+	scanf("%d %d", &a, &b);
+	swap(a, b);
+	printf("%d %d", a, b);	
+*******************************************************************************************************************************************
+1037: [编程入门]宏定义的练习
+时间限制: 3s 内存限制: 192MB 提交: 17250 解决: 12859
+题目描述
+输入两个整数，求他们相除的余数。用带参的宏来实现，编程序。
+输入格式
+a b两个数
+输出格式
+a/b的余数
+样例输入
+3 2
+样例输出
+1 
+
+  代码实现：
+#define REMAINDER(a,b) a%b
+
+int c, d;
+	scanf("%d%d", &c, &d);
+	printf("%d", REMAINDER(c, d));
+*******************************************************************************************************************************************
+1038: [编程入门]宏定义练习之三角形面积
+题目描述
+三角形面积=SQRT(S*(S-a)*(S-b)*(S-c)) 其中S=(a+b+c)/2，a、b、c为三角形的三边。
+定义两个带参的宏，一个用来求area， 另一个宏用来求S。 写程序，
+在程序中用带实参的宏名来求面积area。
+输入格式
+a b c三角形的三条边,可以是小数。
+输出格式
+三角形面积，保留3位小数
+样例输入
+3 4 5
+样例输出
+6.000 
+
+  代码实现：
+#include<math.h>
+#define S(a,b,c) (a+b+c)/2.0
+#define SQRT(a,b,c,s) sqrt(s*(s-a)*(s-b)*(s-c))
+
+double a, b, c;
+	scanf("%lf %lf %lf", &a, &b, &c);
+	double s = S(a, b, c);
+	double area = SQRT(a,b,c,s);
+	printf("%.3lf", area);
+*******************************************************************************************************************************************
+1039: [编程入门]宏定义之闰年判断
+时间限制: 3s 内存限制: 192MB 提交: 18476 解决: 12154
+题目描述
+给年份year，定义一个宏，以判别该年份是否闰年。
+提示：宏名可以定义为LEAP_YEAR，形参为y，既定义宏的形式为 #define LEAP_YEAR(y) 
+(读者设计的字符串）
+输入格式
+一个年份
+输出格式
+根据是否闰年输出，是输出"L",否输出"N"
+样例输入
+2000
+样例输出
+L
+闰年（1）四年一闰百年不闰：即如果year能够被4整除，但是不能被100整除，则year是闰年。 
+（2）每四百年再一闰：如果year能够被400整除，则year是闰年。 
+
+  代码实现：
+#define  LEAP_YEAR(y) ((y % 4 == 0 && y % 100 != 0)||y % 400 == 0)?'L':'N'
+
+int year = 0;
+	scanf("%d", &year);
+	printf("%c", LEAP_YEAR(year));
+*******************************************************************************************************************************************
+1041: [编程入门]宏定义之找最大数
+时间限制: 3s 内存限制: 192MB 提交: 14695 解决: 11042
+题目描述
+分别用函数和带参的宏，从三个数中找出最大的数。
+输入格式
+3个实数
+输出格式
+最大的数,输出两遍，先用函数，再用宏。 保留3位小数。
+样例输入
+1 2 3
+样例输出
+3.000
+3.000 
+
+  代码实现：
+#define Max(a,b,c) (a>b?a:b)>c?(a>b?a:b):c
+double max(double a, double b, double c) {
+	return (a > b ? a : b) > c ? (a > b ? a : b) : c;
+}
+
+double a, b, c;
+	scanf("%lf %lf %lf", &a, &b, &c);
+	printf("%.3lf\n", Max(a, b, c));
+	printf("%.3lf", max(a, b, c));
+*******************************************************************************************************************************************
+1040: [编程入门]实数的打印
+题目描述
+请设计输出实数的格式，包括：⑴一行输出一个实数；⑵一行内输出两个实数；
+⑶一行内输出三个实数。实数用"6.2f"格式输出。
+输入格式
+一个实数，float范围
+输出格式
+输出3行，第一行打印一遍输入的数，第二行打印两遍，第三行打印三遍。 第二行和第三行，用空格分隔同一行的数字。 实数用"6.2f"格式输出。
+样例输入
+0.618
+样例输出
+  0.62
+  0.62   0.62
+  0.62   0.62   0.62 
+
+  代码实现：
+void Print() {
+	double n = 0.0;
+	scanf("%lf", &n);
+	printf("%6.2f\n", n);
+	printf("%6.2f%6.2f\n", n,n);
+	printf("%6.2f%6.2f%6.2f\n", n,n,n);
+}
+
+Print();
+*******************************************************************************************************************************************
+1042: [编程入门]电报加密
+时间限制: 3s 内存限制: 192MB 提交: 29222 解决: 12935
+题目描述
+输入一行电报文字，将字母变成其下一字母（如’a’变成’b’……’z’变成’ａ’
+其它字符不变）。
+输入格式
+一行字符
+输出格式
+加密处理后的字符
+样例输入
+a b
+样例输出
+b c 
+
+  代码实现：
+char str[1000] = { '0' };
+	scanf("%[^\n]", str);
+	int i = 0;
+	while (str[i] != '\0') {
+		if((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z'))
+			str[i] += 1;
+		i++;
+	}
+	printf("%s\n", str);
+*******************************************************************************************************************************************
+1043: [编程入门]三个数字的排序
+时间限制: 3s 内存限制: 192MB 提交: 39165 解决: 23461
+题目描述
+输入三个整数，按由小到大的顺序输出。
+输入格式
+三个整数
+输出格式
+由小到大输出成一行，每个数字后面跟一个空格
+样例输入
+2 3 1
+样例输出
+1 2 3  
+
+  代码实现：
+int arr[3] = { 0 };
+	scanf("%d %d %d", &arr[0],&arr[1],&arr[2]);
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3 - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				int temp = 0;
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+	printf("%d %d %d\n", arr[0], arr[1], arr[2]);
+
+	char* str[3] = { str1,"css","hhel" };
+	printf("%s\n%s\n%s", str[0], str[1], str[2]);
+*******************************************************************************************************************************************
+1044: [编程入门]三个字符串的排序
+时间限制: 3s 内存限制: 192MB 提交: 24435 解决: 13215
+题目描述
+输入三个字符串，按由小到大的顺序输出
+输入格式
+3行字符串
+输出格式
+按照从小到大输出成3行
+样例输入
+cde
+afg
+abc
+样例输出
+abc
+afg
+cde
+
+1、strlen 求字符串函数的长度
+
+2、strcmp(str1,str2) 比较str1与str2 如果str1 > str2 返回1 如果相等就返回0 否则返回 -1 但是在定义上只是前面的大返回正数 而没有说什么哪一个数
+
+2、strcat(str1,str2) 把str2拼接到str1后面，扫描第一个'\0'
+
+4、strcpy(str1,str2) 把str2的值拷贝到str1里面去 如果str1的长度不对则抛出异常 
+
+  代码实现：
+int My_strcmp(char arr1[], char arr2[])
+{
+	char* p1 = arr1;
+	char* p2 = arr2;
+
+	while ((*p1) != '\0' && (*p2) != '\0')
+	{
+		if (*p1 > *p2)
+			return 1;
+		else if (*p1 < *p2)
+			return -1;
+		p1++;
+		p2++;
+	}
+	return 0;
+	if (*p1 == *p2 && *p1 == '\0') return 0;
+	if (*p1 == '\0') return -1;
+	if (*p2 == '\0') return 1;
+}
+char* strcmp(char arr1[], char arr2[])
+{
+	char* p1 = arr1;
+	char* p2 = arr2;
+
+	while ((*p1) != '\0' && (*p2) != '\0')
+	{
+		if (*p1 > *p2)
+			return arr1;
+		else if (*p1 < *p2)
+			return arr2;
+		p1++;
+		p2++;
+	}
+	return NULL;
+	if (*p1 == *p2 && *p1 == '\0') return NULL;
+	if (*p1 == '\0') return arr2;
+	if (*p2 == '\0') return arr1;
+}
+int My_strlen(char arr[])
+{
+	int len = 0;
+	char* p = arr;// 指针P指向数组的开始位置
+	while ((*p) != '\0')
+	{
+		len++;
+		p++;
+	}
+	return len;
+}
+void My_strcat(char* arr1, char* arr2)
+{
+	// 这里实现的是和真实的有些区别，就理解一下 从第一个遇到\0后面开始拼接哈 
+	char* p1 = arr1, * p2 = arr2;
+	while (*p1 != '\0')
+	{
+		p1++;
+	}
+	while (*p2 != '\0')
+	{
+		*p1++ = *p2++;
+	}
+
+}
+void My_strcpy(char arr1[], char arr2[])
+{
+	char* p1 = arr1;
+	char* p2 = arr2;
+
+	do
+	{
+		*p1++ = *p2++;
+	} while (*p2 != '\0');
+}
+
+
+char str0[1000] = { '0'};
+	char str1[1000] = { '0' };
+	char str2[1000] = { '0' };
+	scanf("%s%s%s", str0,str1,str2);
+	char* str[3] = { str0,str1,str2 };
+	int max = 0;
+	int min = 0;
+	int middle = 0;
+	if (My_strcmp(str0, str1) == 1 && My_strcmp(str0, str2) == 1)
+		max = 0;
+	if (My_strcmp(str1, str0) == 1 && My_strcmp(str1, str2) == 1)
+		max = 1;
+	if (My_strcmp(str2, str0) == 1 && My_strcmp(str2, str1) == 1)
+		max = 2;
+	
+	if (My_strcmp(str0, str1) == -1 && My_strcmp(str0, str2) == -1) {
+		min = 0;
+		if (max == 1)middle = 2;
+		if (max == 2)middle = 1;
+	}
+	if (My_strcmp(str1, str0) == -1 && My_strcmp(str1, str2) == -1) {
+		min = 1;
+		if (max == 0)middle = 2;
+		if (max == 2)middle = 0;
+	}
+	if (My_strcmp(str2, str0) == -1 && My_strcmp(str2, str1) == -1) {
+		min = 2;
+		if (max == 1)middle = 0;
+		if (max == 0)middle = 1;
+	}
+	printf("%s\n%s\n%s", str[min], str[middle], str[max]);
+*******************************************************************************************************************************************
+1045: [编程入门]自定义函数之整数处理
+时间限制: 3s 内存限制: 192MB 提交: 35698 解决: 12876
+题目描述
+输入10个整数，将其中最小的数与第一个数对换，把最大的数与最后一个数对换。写三个函数； ①输入10个数；②进行处理；③输出10个数。
+输入格式
+10个整数
+输出格式
+整理后的十个数，每个数后跟一个空格（注意最后一个数后也有空格）
+样例输入
+2 1 3 4 5 6 7 8 10 9
+样例输出
+1 2 3 4 5 6 7 8 9 10  
+
+  代码实现：
+int arr[10] = { 0 };
+for (int i = 0; i < 10; i++) {
+	scanf("%d", &arr[i]);
+}
+int max = arr[0];
+int min = arr[0];
+int index = 0;
+for (int i = 1; i < 10; i++) {
+	if (arr[i] > max) {
+		max = arr[i];
+		index = i;
+	}
+}
+int temp = 0;
+temp = arr[9];
+arr[9] = arr[index];
+arr[index] = temp;
+index = 0;
+for (int i = 1; i < 10; i++) {
+	if (arr[i] < min) {
+		min = arr[i];
+		index = i;
+	}
+}
+temp = arr[0];
+arr[0] = arr[index];
+arr[index] = temp;
+for (int i = 0; i < 10; i++) {
+	printf("%d ",arr[i]);
+}
+
+*******************************************************************************************************************************************
+1046: [编程入门]自定义函数之数字后移
+时间限制: 3s 内存限制: 192MB 提交: 20026 解决: 13150
+题目描述
+有n个整数，使前面各数顺序向后移m个位置，最后m个数变成前面m个数。写一函数：实现以上功能，在主函数中输入n个数和输出调整后的n个数。
+输入格式
+输入数据的个数n n个整数 移动的位置m
+输出格式
+移动后的n个数
+样例输入
+10
+1 2 3 4 5 6 7 8 9 10
+2
+样例输出
+9 10 1 2 3 4 5 6 7 8  
+
+  代码实现：
+#define MAX 99
+int move = 0;
+int length = 0;
+scanf("%d", &length);
+int arr[MAX] = { 0 };
+for (int i = 0; i < length; i++) 
+	scanf("%d", &arr[i]);
+scanf("%d", &move);
+int temp = 0;
+for (int i = 0; i < length; i++) 
+	arr[length - 1 + move - i] = arr[length - 1 - i];
+for (int i = 1; i <= move; i++) {
+	temp = arr[length - 1 + i];
+	arr[length - 1 + i] = arr[(length - 1 + i) % length];
+	arr[(length - 1 + i) % length] = temp;
+}
+for (int i = 0; i < length; i++)
+	printf("%d ", arr[i]);
+*******************************************************************************************************************************************
+1047: [编程入门]报数问题
+时间限制: 3s 内存限制: 192MB 提交: 19472 解决: 10286
+题目描述
+有n人围成一圈，顺序排号。从第1个人开始报数（从1到3报数），
+凡报到3的人退出圈子，问最后留下的是原来的第几号的那位。
+输入格式
+初始人数n
+输出格式
+最后一人的初始编号
+样例输入
+3
+样例输出
+2 
+
+  代码实现：
+#define F -1
+#define T 1
+#define MAX 99
+int number = 0;
+scanf("%d", &number);
+int arr[MAX] = { 0 };
+int i = 0;
+for (i = 0; i < number; i++)
+	arr[i] = T;
+int bianhao = 0;
+int length = number;
+while (1) {
+	for (i = 0; i < length; i++) {
+		if (arr[i] == T)
+		{
+			bianhao++;
+			if (bianhao == 3)
+			{
+				arr[i] = F;
+				length--;
+				bianhao = 0;
+			}
+		}
+	}
+	if (length == 1)break;
+}
+for (i = 0; i < number; i++) {
+	if (arr[i] == T)
+		printf("%d", (i + 1) % 3);
+}
+*******************************************************************************************************************************************
+1048: [编程入门]自定义函数之字符串拷贝
+时间限制: 3s 内存限制: 192MB 提交: 18264 解决: 10639
+题目描述
+有一字符串，包含n个字符。写一函数，将此字符串中从第m个字符
+开始的全部字符复制成为另一个字符串。
+输入格式
+数字n 一行字符串 数字m
+输出格式
+从m开始的子串
+样例输入
+6
+abcdef
+3
+样例输出
+cdef 
+
+  代码实现：
+#define MAX 99
+int length = 0;
+char str[MAX] = { '0' };
+char new_str[MAX] = { '0' };
+scanf("%d", &length);
+scanf("%s", str);
+int FROM = 0;
+scanf("%d", &FROM);
+int i = 0;
+while (1) {
+	if (str[FROM - 1 + i] != '\0') {
+		new_str[i] = str[FROM - 1 + i];
+	}
+	else break;
+	i++;
+}
+printf("%s",new_str );
+*******************************************************************************************************************************************
+1049: [编程入门]结构体之时间设计
+时间限制: 3s 内存限制: 192MB 提交: 20624 解决: 11960
+题目描述
+定义一个结构体变量（包括年、月、日）。计算该日在本年中是第几天，注意闰年问题。
+输入格式
+年月日
+输出格式
+当年第几天
+样例输入
+2000 12 31
+样例输出
+366  
+
+  代码实现：
+struct Date {
+	int year;
+	int month;
+	int day;
+};
+* 
+* 
+struct Date date;
+scanf("%d %d %d", &date.year, &date.month, &date.day);
+int day = 0;
+switch (date.month) {
+case 1:day = date.day; break;
+case 2:day = 31 + date.day; break;
+case 3:day = 31 + 29 + date.day; break;
+case 4:day = 31 + 29 + 31 + date.day; break;
+case 5:day = 31 + 29 + 31 + 30 + date.day; break;
+case 6:day = 31 + 29 + 31 + 30 + 31 + date.day; break;
+case 7:day = 31 + 29 + 31 + 30 + 31 + 30 + date.day; break;
+case 8:day = 31 + 29 + 31 + 30 + 31 + 30 + 31 + date.day; break;
+case 9:day = 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + date.day; break;
+case 10:day = 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + date.day; break;
+case 11:day = 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + date.day; break;
+case 12:day = 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + date.day; break;
+}
+if ((date.year % 4 == 0 && date.year % 100 != 0) || (date.year % 400 == 0) ){
+	printf("%d", day);
+}
+else {
+	if (date.month > 2) day = day - 1;
+	printf("%d", day);
+}
+*******************************************************************************************************************************************
+1050: [编程入门]结构体之成绩记录
+时间限制: 3s 内存限制: 192MB 提交: 19952 解决: 11742
+题目描述
+现有有N个学生的数据记录，每个记录包括学号、姓名、三科成绩。 
+编写一个函数input,用来输入一个学生的数据记录。
+编写一个函数print,打印一个学生的数据记录。
+在主函数调用这两个函数，读取N条记录输入，再按要求输出。 N<100
+输入格式
+学生数量N占一行 每个学生的学号、姓名、三科成绩占一行，空格分开。
+输出格式
+每个学生的学号、姓名、三科成绩占一行，逗号分开。
+样例输入
+2
+a100 clang 70 80 90
+b200 dotcpp 90 85 75
+样例输出
+a100,clang,70,80,90
+b200,dotcpp,90,85,75  
+
+  代码实现：
+struct Student {
+	char id[50];
+	char name[50];
+	int score1;
+	int score2;
+	int score3;
+};
+
+int number = 0;
+scanf("%d", &number);
+struct Student std[99];
+for (int i = 0; i < number; i++) {
+	scanf("%s %s %d %d %d", &std[i].id, &std[i].name, &std[i].score1,
+		&std[i].score2, &std[i].score3);
+}
+for (int i = 0; i < number; i++) {
+	printf("%s,%s,%d,%d,%d\n", std[i].id, std[i].name, std[i].score1,
+		std[i].score2, std[i].score3);
+}
+*******************************************************************************************************************************************
+1051: [编程入门]结构体之成绩统计2
+时间限制: 3s 内存限制: 192MB 提交: 19759 解决: 9521
+题目描述
+有N个学生，每个学生的数据包括学号、姓名、3门课的成绩，
+从键盘输入N个学生的数据，要求打印出3门课的总平均成绩，
+以及最高分的学生的数据（包括学号、姓名、3门课成绩）
+输入格式
+学生数量N占一行每个学生的学号、姓名、三科成绩占一行，空格分开。
+输出格式
+各门课的平均成绩 最高分的学生的数据（包括学号、姓名、3门课成绩）
+样例输入
+2
+1 blue 90 80 70
+b clan 80 70 60
+样例输出
+85 75 65
+1 blue 90 80 70 
+
+  代码实现：
+struct Student {
+	char id[50];
+	char name[50];
+	int score1;
+	int score2;
+	int score3;
+};
+
+int number = 0;
+scanf("%d", &number);
+struct Student std[99];
+int score1_total = 0;
+int score2_total = 0;
+int score3_total = 0;
+for (int i = 0; i < number; i++) {
+	scanf("%s %s %d %d %d", &std[i].id, &std[i].name, &std[i].score1,
+		&std[i].score2, &std[i].score3);
+	score1_total += std[i].score1;
+	score2_total += std[i].score2;
+	score3_total += std[i].score3;
+}
+printf("%d %d %d\n", score1_total / number, score2_total / number, score3_total / number);
+int max_index = 0;
+int total = std[0].score1 + std[0].score2 + std[0].score3;
+for (int i = 1; i < number; i++) {
+	if (total < (std[i].score1 + std[i].score2 + std[i].score3)) {
+		max_index = i;
+		total = std[i].score1 + std[i].score2 + std[i].score3;
+	}
+}
+printf("%s %s %d %d %d\n", std[max_index].id, std[max_index].name,
+	std[max_index].score1, std[max_index].score2, std[max_index].score3);
+*******************************************************************************************************************************************
+1052: [编程入门]链表合并
+时间限制: 3s 内存限制: 192MB 提交: 10894 解决: 6297
+题目描述
+已有a、b两个链表，每个链表中的结点包括学号、成绩。
+要求把两个链表合并，按学号升序排列。
+
+输入格式
+第一行，a、b两个链表元素的数量N、M,用空格隔开。 
+接下来N行是a的数据 然后M行是b的数据 每行数据由学号和成绩两部分组成
+
+输出格式
+按照学号升序排列的数据
+
+样例输入
+2 3
+5 100
+6 89
+3 82
+4 95
+2 10
+样例输出
+2 10
+3 82
+4 95
+5 100
+6 89 
+
+  代码实现：
+struct Student {
+	int id;
+	int score;
+	struct Student* next;
+};
+//创建一个链表
+struct Student* create_node(int number) {
+	//先定义一个头结点，不存放有效数据
+	struct Student* head = (struct Student*)malloc(sizeof(struct Student));
+	if (head == NULL)
+		return NULL;
+	head->id = -1;
+	head->score = -1;
+	head->next = NULL;
+
+	//输入要加入的n个结点的信息，新的结点加到链表最后
+	struct Student* tem = head;
+	for (int i = 0; i < number; i++) {
+		struct Student* new_node = 
+			(struct Student*)malloc(sizeof(struct Student));
+		if (new_node == NULL)	return NULL;
+		scanf("%d %d", &new_node->id,&new_node->score);
+		new_node->next = NULL;
+		tem->next = new_node;
+		tem = new_node;
+	}
+	return head;
+}
+//合并链表
+struct Student* merge_node(struct Student* std1, struct Student* std2) {
+	if (std1 == NULL || std2 == NULL)	return NULL;
+	struct Student* tem1 = std1;
+	struct Student* tem2 = std2;
+	//让tem1指向std1的尾结点
+	while (tem1->next != NULL)		tem1= tem1->next;
+	//合并
+	tem1->next = tem2->next;
+	//释放tem2头结点
+	free(tem2);
+	return std1;
+}
+
+//排序
+void sort_node(struct Student* std) {
+	if (std == NULL) return;
+	//上一结点
+	struct Student* pre = NULL;
+	//当前结点
+	struct Student* cur = NULL;
+	struct Student tem;
+	//排序，有点类似冒泡
+	for (pre = std->next; pre->next != NULL; pre = pre->next) {
+		for (cur = pre->next; cur != NULL; cur = cur->next) {
+			if (pre->id > cur->id) {
+				tem = *pre;
+				*pre = *cur;
+				*cur = tem;
+
+				tem.next = pre->next;
+				pre->next = cur->next;
+				cur->next = tem.next;
+			}
+		}
+	}
+}
+
+//打印链表
+void printf_node(struct Student* std) {
+	if (std == NULL || std->next == NULL)
+	{
+		printf("this node is empty!\n");
+		return;
+	}
+	struct Student* cur = std->next;
+	while (cur != NULL) {
+		printf("%d %d\n", cur->id, cur->score);
+		cur = cur->next;
+	}
+}
+
+//释放结点
+void free_node(struct Student* std) {
+	if (std == NULL)	return;
+	struct Student* s = std;
+	struct Student* tem = NULL;
+	while (s != NULL) {
+		tem = s->next;
+		free(s);
+		s = tem;
+	}
+}
+
+
+
+int a_number = 0;
+int b_number = 0;
+scanf("%d %d", &a_number, &b_number);
+struct Student* std_a = create_node(a_number);
+struct Student* std_b = create_node(b_number);
+struct Student* std = merge_node(std_a, std_b);
+sort_node(std);
+printf_node(std);
+free_node(std);
+return 0;
