@@ -47,7 +47,114 @@ NOTE_6:
 a=a^b;b=a^b;a=a^b
 (a ^ a = 0,a ^ 0 = a)
 
-NOTE_
+NOTE_7:
+int类型转换为char
+直接在int变量后加上一个’0’；
+例如：
+int a = 10;
+printf(“%c\n”,a+’0’)
+
+char转换为int类型
+char类型的变量减去一个‘0’；
+例如：
+Char b = ‘5’;
+Printf(“%d\n”,b-‘0’)
+
+字符串转换成数字
+用atoi，atol，atof函数，分别对应的是整型，long型，double型。
+以整型为例：
+char str[]=“1234”;
+int a=atoi(str);
+
+数字换成字符串
+用sprintf函数。以整型为例：
+char str[10];
+int a=1234;
+sprintf(str,"%d",a);
+
+C语言 单引号和双引号的区别
+1、含义不同。
+用单引号引起的一个字符实际上代表一个整数，整数值对应于该字符在编译器采用的字符集中的序列值。而一般我们的编译器采用的都是ASCII字符集。因此’s’的含义其实和十进制数115的含义是一致的。
+而用双引号引起的字符串，代表的是一个指向无名数组起始字符的指针。
+2、大小不同。
+用单引号引起的一个字符大小就是一个字节。
+而用双引号引起的字符串大小是字符的总大小+1，因为用双引号引起的字符串会在字符串末尾添加一个二进制为0的字符’\0’。
+数组的输入：
+
+ int h[10] = {1,2,3};
+ for (int m=0; m<4; m++)
+ {
+  scanf("%d", &h[m]);
+ }
+ printf("%d\n", h[0]);
+1
+2
+3
+4
+5
+6
+itoa
+功 能:把一整数转换为字符串
+用 法:char *itoa(int value, char *string, int radix);
+详细解释:itoa是英文integer to array(将int整型数转化为一个字符串,并将值保存在数组string中)的缩写.
+参数：
+　　value: 待转化的整数。
+　　radix: 是基数的意思,即先将value转化为radix进制的数，范围介于2-36，比如10表示10进制，16表示16进制。
+　　* string: 保存转换后得到的字符串。
+　　返回值：
+　　char * : 指向生成的字符串， 同 *string。
+　　备注:该函数的头文件是"stdlib.h"
+
+#include <stdlib.h>
+　　#include <stdio.h>
+　　int main()
+　　{
+　　int number = 123456;
+　　char string[25];
+　　itoa(number, string, 10);
+　　printf("integer = %d string = %s\n", number, string);
+　　return 0;
+　　}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+atoi
+C语言库函数名: atoi
+　　功 能: 把字符串转换成整型数
+　　函数说明: atoi()会扫描参数nptr字符串，检测到第一个数字或正负符号时开始做类型转换，之后检测到非数字或结束符 \0 时停止转换，返回整型数。
+　　原型: int atoi(const char *nptr);
+　　**需要用到的头文件: **#include <stdlib.h>
+　程序例:
+
+#include <stdlib.h>
+　　#include <stdio.h>
+　　int main(void)
+　　{
+　　int n;
+　　char *str = "12345.67";
+　　n = atoi(str);
+　　printf("string = %s integer = %d\n", str, n);
+　　return 0;
+　　}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+执行结果
+　　string = 12345.67 integer = 12345
 
 NOTE_
 
